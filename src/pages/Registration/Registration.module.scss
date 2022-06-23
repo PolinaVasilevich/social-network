@@ -11,9 +11,22 @@
   }
 
   .avatar {
+    overflow: hidden;
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+
+    label {
+      cursor: pointer;
+    }
+
+    .img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
   }
 
   .field {
