@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
 import { Container } from "@mui/system";
@@ -17,6 +17,8 @@ const Header: FC = () => {
 
   const onClickLogout = () => {
     dispatch(AuthActionCreator.logout());
+    localStorage.removeItem("user");
+    localStorage.removeItem("isAuth");
   };
 
   return (
@@ -40,7 +42,9 @@ const Header: FC = () => {
               </>
             ) : (
               <>
-                <Avatar src={user.avatar} alt="avatar" />
+                <Link to={routeNames.USER_INFO}>
+                  <Avatar src={user.avatar} alt="avatar" />
+                </Link>
                 <Button
                   onClick={onClickLogout}
                   variant="contained"

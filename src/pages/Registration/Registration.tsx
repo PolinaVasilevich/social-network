@@ -40,6 +40,8 @@ export const Registration: FC = () => {
         avatar,
       };
       dispatch(AuthActionCreator.registerUser(newUser));
+      localStorage.setItem("user", JSON.stringify(newUser));
+      localStorage.setItem("isAuth", JSON.stringify(true));
       navigate(routeNames.HOME);
     }
   };
@@ -55,21 +57,21 @@ export const Registration: FC = () => {
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.avatar}>
-          {avatar ? (
-            <img src={avatar} className={styles.img} alt="avatar" />
-          ) : (
-            <>
-              <input
-                id="button-upload-avatar"
-                type="file"
-                style={{ display: "none" }}
-                onChange={uploadAvatar}
-              />
-              <label htmlFor="button-upload-avatar">
+          <>
+            <input
+              id="button-upload-avatar"
+              type="file"
+              style={{ display: "none" }}
+              onChange={uploadAvatar}
+            />
+            <label htmlFor="button-upload-avatar">
+              {avatar ? (
+                <img src={avatar} className={styles.img} alt="avatar" />
+              ) : (
                 <Avatar sx={{ width: 150, height: 150 }} />
-              </label>
-            </>
-          )}
+              )}
+            </label>
+          </>
         </div>
         <TextField
           {...register("username", { required: "Enter username" })}

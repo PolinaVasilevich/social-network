@@ -1,13 +1,11 @@
 import { AuthActionEnum, AuthActionTypes, IAuthState } from "./types";
 
-const initialState: IAuthState = {
-    user: {
-        username: '',
-        password: '',
-        avatar: '',
-    },
+const user = JSON.parse(localStorage.getItem('user')!) || {};
+const isAuth = JSON.parse(localStorage.getItem('isAuth')!) || false;
 
-    isAuth: false,
+const initialState: IAuthState = {
+    user,
+    isAuth
 }
 
 export default function authReducer( state = initialState, action: AuthActionTypes): IAuthState {

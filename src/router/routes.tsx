@@ -1,4 +1,4 @@
-import { Home, Login, Registration } from "../pages";
+import { Home, Login, Registration, UserInfo } from "../pages";
 import routeNames from "./routeNames";
 
 export const routes = [
@@ -16,5 +16,10 @@ export const routes = [
     path: routeNames.REGISTER,
     element: <Registration />,
     auth: false,
+  },
+  {
+    path: routeNames.USER_INFO,
+    element: <UserInfo />,
+    auth: true,
   },
 ];
