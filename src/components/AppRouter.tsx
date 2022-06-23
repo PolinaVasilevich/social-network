@@ -1,10 +1,11 @@
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { NotFound } from "../pages";
 import { routes } from "../router/routes";
 
 const AppRouter: FC = () => {
-  const isAuth = false;
+  const { isAuth } = useSelector((state: any) => state.auth);
 
   return (
     <Routes>

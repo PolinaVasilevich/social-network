@@ -2,17 +2,22 @@ import React, { FC, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Container } from "@mui/system";
-import { Button } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 
 import styles from "./Header.module.scss";
 
 import routeNames from "../../router/routeNames";
 import logo from "../../assets/images/logo.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthActionCreator } from "../../store/reducers/auth/action-creators";
 
 const Header: FC = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const { isAuth, user } = useSelector((state: any) => state.auth);
+  const dispatch = useDispatch();
 
-  const onClickLogout = () => setIsAuth(false);
+  const onClickLogout = () => {
+    dispatch(AuthActionCreator.logout());
+  };
 
   return (
     <header className={styles.root}>
@@ -35,6 +40,7 @@ const Header: FC = () => {
               </>
             ) : (
               <>
+                <Avatar src={user.avatar} alt="avatar" />
                 <Button
                   onClick={onClickLogout}
                   variant="contained"

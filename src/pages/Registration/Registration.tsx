@@ -8,31 +8,38 @@ import { useNavigate } from "react-router-dom";
 import routeNames from "../../router/routeNames";
 
 import styles from "./Registration.module.scss";
-
-type FormData = {
-  username: string;
-  password: any;
-  avatar?: string;
-};
+import { IUser } from "../../types";
+import { useDispatch } from "react-redux";
+import { AuthActionCreator } from "../../store/reducers/auth/action-creators";
 
 export const Registration: FC = () => {
   const [avatar, setAvatar] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<FormData>({
+  } = useForm<IUser>({
     defaultValues: {
       username: "",
       password: "",
     },
+    mode: "onChange",
   });
 
-  const onSubmit = (values: FormData) => {
+  const onSubmit = (values: IUser) => {
+    console.log(isValid);
+    console.log(values);
+
     if (isValid) {
+      const newUser = {
+        ...values,
+        avatar,
+      };
+      dispatch(AuthActionCreator.registerUser(newUser));
       navigate(routeNames.HOME);
     }
   };
@@ -59,7 +66,7 @@ export const Registration: FC = () => {
                 onChange={uploadAvatar}
               />
               <label htmlFor="button-upload-avatar">
-                <Avatar sx={{ width: 100, height: 100 }} />
+                <Avatar sx={{ width: 150, height: 150 }} />
               </label>
             </>
           )}
@@ -80,7 +87,13 @@ export const Registration: FC = () => {
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
         />
-        <Button type="submit" size="large" variant="contained" fullWidth>
+        <Button
+          disabled={!isValid}
+          type="submit"
+          size="large"
+          variant="contained"
+          fullWidth
+        >
           Register
         </Button>
       </form>

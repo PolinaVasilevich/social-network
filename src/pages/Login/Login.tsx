@@ -5,28 +5,32 @@ import styles from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import routeNames from "../../router/routeNames";
-
-interface IFormData {
-  username: string;
-  password: any;
-}
+import { IUser } from "../../types";
+import { useDispatch } from "react-redux";
+import { AuthActionCreator } from "../../store/reducers/auth/action-creators";
 
 export const Login: FC = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<IFormData>({
+  } = useForm<IUser>({
     defaultValues: {
       username: "",
       password: "",
     },
+    mode: "onChange",
   });
 
-  const onSubmit = (values: IFormData) => {
+  const onSubmit = (values: IUser) => {
     if (isValid) {
+      const user = {
+        ...values,
+      };
+      dispatch(AuthActionCreator.loginUser(user));
       navigate(routeNames.HOME);
     }
   };
