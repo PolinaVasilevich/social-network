@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.email {
+  margin: 10px 0 !important;
+}
+
+.field {
+  & + & {
+    margin-left: 15px;
+  }
+}

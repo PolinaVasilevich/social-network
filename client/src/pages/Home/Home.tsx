@@ -1,32 +1,19 @@
+import { Card } from "@mui/material";
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
+import PostSide from "../../components/PostSide/PostSide";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
 
-import Post from "../../components/Post/Post";
-import useFetch from "../../hooks/useFetch/useFetch";
-
-import { IPost } from "../../types/posts";
+import styles from "./Home.module.scss";
 
 export const Home: FC = () => {
-  const {
-    data: posts,
-    error,
-    loading,
-  } = useFetch({
-    url: "/posts",
-  });
-
-  const spinner = loading ? <p>Loading...</p> : null;
-  const errorMessage = error ? <p>{error}</p> : null;
+  const { user } = useSelector((state: any) => state.auth);
 
   return (
-    <div>
-      {spinner}
-      {errorMessage}
-      <div>
-        {posts.slice(0, 9).map((post: IPost) => (
-          <div key={post.id}>
-            <Post post={post} />
-          </div>
-        ))}
+    <div className={styles.root}>
+      <div className={styles.content}>
+        <h1>RANDOM ENGLISH WORD</h1>
+        <Card className={styles["word-card"]}>WORD</Card>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 export { Home } from "./Home/Home";
-export { Login } from "./Login/Login";
-export { Registration } from "./Registration/Registration";
-export {UserInfo} from './UserInfo/UserInfo';
+export { UserInfo } from "./UserInfo/UserInfo";
+export { Auth } from "./Auth/Auth";
 export { NotFound } from "./NotFound/NotFound";

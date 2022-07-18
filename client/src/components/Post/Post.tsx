@@ -1,17 +1,17 @@
 import React, { FC } from "react";
 
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Typography,
+  CardMedia,
   IconButton,
 } from "@mui/material";
-
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-
-import { IPost } from "../../types/posts";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import CommentIcon from "@mui/icons-material/Comment";
+import SendIcon from "@mui/icons-material/Send";
+import { IPost } from "../../types/post.type";
 
 import styles from "./Post.module.scss";
 
@@ -19,25 +19,30 @@ interface IPostProps {
   post: IPost;
 }
 
-const Post: FC<IPostProps> = (props) => {
-  const { post } = props;
+const Post: FC<IPostProps> = ({ post }) => {
+  const { img, title, body } = post;
 
   return (
-    <Card sx={{ maxWidth: 500 }} className={styles.root}>
+    <Card className={styles.root}>
+      <CardMedia
+        component="img"
+        height="140"
+        image="/static/images/cards/contemplative-reptile.jpg"
+        alt="green iguana"
+      />
       <CardContent>
-        <Typography variant="h5">{post.title}</Typography>
-        <Typography variant="body2" color="text.secondary">
-          {post.body}
-        </Typography>
+        <CardActions>
+          <IconButton>
+            <FavoriteBorderIcon />
+          </IconButton>
+          <IconButton>
+            <CommentIcon />
+          </IconButton>
+          <IconButton>
+            <SendIcon />
+          </IconButton>
+        </CardActions>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 };

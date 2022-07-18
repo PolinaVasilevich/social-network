@@ -1,0 +1,46 @@
+.root {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  text-align: center;
+}
+
+.right {
+  margin-left: 50px;
+}
+
+.form {
+  max-width: 400px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.64);
+  border-radius: 1rem;
+}
+
+.btn-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin-right: 20px;
+  color: #333;
+}
+
+.title {
+  margin-top: 0;
+  text-align: center;
+  font-size: 25px;
+}

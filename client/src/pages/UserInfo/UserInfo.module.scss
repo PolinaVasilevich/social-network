@@ -1,25 +1,5 @@
 .root {
-  .avatar {
-    width: 150px;
-    height: 150px;
-  }
-  .content {
-    width: 100%;
-    display: flex;
-  }
-
-  .userDetails {
-    margin-left: 40px;
-
-    .fullname {
-      display: flex;
-      justify-content: space-between;
-
-      .field {
-        & + & {
-          margin-left: 30px;
-        }
-      }
-    }
-  }
+  display: flex;
+  justify-content: flex-start;
+  height: calc(100vh - 78px);
 }

@@ -1,37 +1,39 @@
 .root {
-  background-color: #fff;
-  padding: 10px 0;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 30px;
-
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .logo {
-      font-weight: bold;
-      font-size: 25px;
-
-      a {
-        color: #000;
-      }
-    }
-
-    .buttons {
-      display: flex;
-
-      button {
-        margin-left: 10px;
-      }
-    }
-  }
-
-  .avatar {
-    display: flex;
-  }
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px 50px;
+  color: #fff;
 
   a {
-    text-decoration: none;
+    text-decoration: none !important;
+    color: inherit !important;
+    text-transform: uppercase;
+    font-weight: 600px;
   }
+
+  ul {
+    list-style: none !important;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.avatar {
+  cursor: pointer;
 }
